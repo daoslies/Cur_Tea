@@ -1,0 +1,185 @@
+ 
+
+philly = Person(prince_phil, init_tea = [tea_menu[2]]*int(random.uniform(0, 10)), init_food = random.uniform(0, 10),
+                init_hunger = random.uniform(4, 10), init_thirst = random.uniform(0, 10),
+                init_supply_panic = random.uniform(0, 10), init_health_panic = random.uniform(0, 10))
+
+lino = Person(linus, init_tea = [tea_menu[2]]*int(random.uniform(0, 10)), init_food = random.uniform(0, 10),
+              init_hunger = random.uniform(4, 10), init_thirst = random.uniform(4, 10),
+              init_supply_panic = random.uniform(0, 10), init_health_panic = random.uniform(0, 10))
+
+addy = Person(adrian, init_tea = [tea_menu[2]]*10, init_food = random.uniform(0, 10),
+              init_hunger = random.uniform(4, 10), init_thirst = random.uniform(4, 10),
+              init_supply_panic = random.uniform(0, 10), init_health_panic = random.uniform(0, 10))
+
+damian = Person(damo, init_tea = [tea_menu[2]]*int(random.uniform(0, 10)), init_food = random.uniform(0, 10),
+                init_hunger = random.uniform(4, 10), init_thirst = random.uniform(4, 10),
+                init_supply_panic = random.uniform(0, 10), init_health_panic = random.uniform(0, 10))
+
+game = True
+days = []
+Day = 0
+
+deathDay_phil = None
+deathDay_damo = None
+deathDay_lino = None
+deathDay_addy = None
+
+while game == True:
+  print()
+  print("Current Day: ", Day)
+ 
+  ### ERRYONE decides to eat or explorre and says whre they're exploring
+
+  ## erryone who 4ats eats
+
+  ## erryone who explores is entered into a fucntion 
+
+  ## if location is x do a thing  exploring 
+
+  ## Grid of 4
+
+  ## 1 - Trade
+
+  ## 2 - regular fight
+
+  ## 3 - boss fight
+
+  ## 4 - Rest 
+
+  philly.action()
+  lino.action()
+  damian.action()
+  addy.action()
+
+  
+
+  Day +=1
+  days.append(Day)
+
+  if deathDay_phil == None and philly.alive == False:
+    deathDay_phil = Day
+    print(f'Today Marks the Death of Our Dear Friend, {philly.name}')
+
+  if deathDay_addy == None and addy.alive == False:
+    deathDay_addy = Day
+    print(f'Goodbye Sweet Soldier, {addy.name}')
+
+  if deathDay_damo == None and damian.alive == False:
+    deathDay_damo = Day
+    print(f'To The Stars, My Love, We Go... {damian.name}')
+
+  if deathDay_lino == None and lino.alive == False:
+    deathDay_lino = Day
+    print(f'Where is Your God Now {lino.name} ???')
+
+
+  if philly.alive == False and lino.alive == False and damian.alive == False and addy.alive == False:
+    game = False
+##############
+
+print(" \n Price Phillip's Performance  \n")
+
+print(deathDay_phil)
+
+print(len(philly.hunger_list))
+
+########################################################################
+
+plt.plot(range(deathDay_phil), philly.hunger_list)
+plt.plot(range(deathDay_phil), philly.thirst_list)
+plt.plot(range(deathDay_phil), philly.food_list)
+plt.plot(range(deathDay_phil), philly.tea_list)
+
+
+plt.legend(['hunger', 'thirst', 'food', 'tea'])
+
+plt.show()
+
+plt.plot(range(deathDay_phil), philly.panic_supply_list)
+plt.plot(range(deathDay_phil), philly.panic_health_list)
+
+plt.legend(['panic_supply', 'panic_health'])
+
+plt.show()
+
+
+#################
+
+
+print(" \n Lino's Performance  \n")
+
+print(deathDay_lino)
+
+print(len(lino.hunger_list))
+
+plt.plot(range(deathDay_lino), lino.hunger_list)
+plt.plot(range(deathDay_lino), lino.thirst_list)
+plt.plot(range(deathDay_lino), lino.food_list)
+plt.plot(range(deathDay_lino), lino.tea_list)
+
+
+plt.legend(['hunger', 'thirst', 'food', 'tea'])
+
+plt.show()
+
+plt.plot(range(deathDay_lino), lino.panic_supply_list)
+plt.plot(range(deathDay_lino), lino.panic_health_list)
+
+plt.legend(['panic_supply', 'panic_health'])
+
+plt.show()
+
+###################
+
+
+print(" \n Adrien's Performance  \n")
+
+
+print(deathDay_addy)
+
+print(len(addy.hunger_list))
+
+
+plt.plot(range(deathDay_addy), addy.hunger_list)
+plt.plot(range(deathDay_addy), addy.thirst_list)
+plt.plot(range(deathDay_addy), addy.food_list)
+plt.plot(range(deathDay_addy), addy.tea_list)
+
+
+plt.legend(['hunger', 'thirst', 'food', 'tea'])
+
+
+plt.show()
+
+plt.plot(range(deathDay_addy), addy.panic_supply_list)
+plt.plot(range(deathDay_addy), addy.panic_health_list)
+
+plt.legend(['panic_supply', 'panic_health'])
+
+plt.show()
+
+
+################
+
+print(" \n Damdien's Performance  \n")
+
+
+plt.plot(range(deathDay_damo), damian.hunger_list)
+plt.plot(range(deathDay_damo), damian.thirst_list)
+plt.plot(range(deathDay_damo), damian.food_list)
+plt.plot(range(deathDay_damo), damian.tea_list)
+
+plt.legend(['hunger', 'thirst', 'food', 'tea'])
+
+plt.show()
+
+
+plt.plot(range(deathDay_damo), damian.panic_supply_list)
+plt.plot(range(deathDay_damo), damian.panic_health_list)
+
+plt.legend(['panic_supply', 'panic_health'])
+
+plt.show()
+
+
