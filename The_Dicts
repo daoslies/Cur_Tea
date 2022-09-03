@@ -1,0 +1,64 @@
+## TEA
+
+
+earlGrey = { 'Name' : 'Earl Grey', 
+         'Thirst' : 10,
+         'Hunger' : 0,
+         'Health' : 5}
+
+
+godsTear = { 'Name' : "God's Tear", 
+         'Thirst' : 10,
+         'Hunger' : 0,
+         'Health' : 0}
+
+
+builder = { 'Name' : "Builder's Tea", 
+         'Thirst' : 5,
+         'Hunger' : 0,
+         'Health' : 0}
+
+
+coffee = { 'Name' : 'Coffee', 
+         'Thirst' : -1,
+         'Hunger' : 2,
+         'Health' : 5}
+
+
+liqGin = { 'Name' : 'Liquorice & Ginger', 
+         'Thirst' : -5,
+         'Hunger' : -2,
+         'Health' : -1}
+
+
+tea_menu = [earlGrey, godsTear, builder, coffee, liqGin]
+
+
+
+
+
+
+
+### PEOPLE
+
+linus = { 'Name' : 'Linus', 
+         'Age' : 23,
+         'Religion' : 'Catholic',
+         'Thirst' : 1}
+
+adrian = { 'Name' : 'Adrian', 
+         'Age' : 1322,
+         'Religion' : 'Prince Philip Movement',
+         'Thirst' : 1}
+
+damo = { 'Name' : 'Damo', 
+         'Age' : 23,
+         'Religion' : 'Buddhism',
+         'Thirst' : 1}
+
+prince_phil = { 'Name' : 'Prince Philip', 
+                'Age' : 110,
+                'Religion' : 'Protestant',
+         'Thirst' : 1}
+
+people_list = [linus, adrian, damo, prince_phil]
