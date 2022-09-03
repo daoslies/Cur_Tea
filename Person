@@ -1,0 +1,186 @@
+class Person:
+
+  def __init__(self, nameDict, init_tea, init_food, init_thirst, init_hunger,
+               init_supply_panic, init_health_panic):
+
+    self.name = nameDict['Name']
+    
+    self.thirst = init_thirst
+    self.init_thirst = init_thirst
+    
+    self.hunger = init_hunger
+    self.init_hunger = init_hunger
+    
+    self.tea = init_tea
+    self.init_tea = len(init_tea)
+
+    self.food = init_food
+    self.init_food = init_food
+
+    self.alive = True
+
+    self.health = 100
+    self.maxHealth = 100
+
+    self.panic_supply = init_supply_panic
+    self.init_panic_supply = init_supply_panic
+    
+    self.panic_health = init_health_panic
+    self.init_panic_health = init_health_panic
+
+
+    self.thirst_list = []
+    self.hunger_list = []
+    self.tea_list = []
+    self.food_list = []
+    self.panic_supply_list = []
+    self.panic_health_list = []
+
+   
+
+  def drinking(self):
+    #print('Slurp Slurp...')
+    if len(self.tea) > 0 and self.thirst >= 0:
+      self.active_tea = self.tea.pop(0)
+      print(self.active_tea)
+      self.active_tea = self.active_tea
+      print(self.active_tea)
+      
+
+      active_tea_thirst = self.active_tea['Thirst']
+      print(active_tea_thirst)
+      self.thirst = self.thirst + active_tea_thirst
+      self.hunger = self.hunger + self.active_tea['Hunger']
+      self.health = self.health + self.active_tea['Health']
+
+  def eating(self):
+    #print('Time To Eat!')
+    if self.food > 0 and self.hunger >= 0:
+      self.food = self.food - 1
+      self.hunger = self.hunger + 5
+      self.thirst = self.thirst - 2
+
+
+  def reward(self):
+
+      rand = random.uniform(0, 1) * 10
+
+      if rand < 5:
+
+        self.panic_supply -= 1
+
+        rand = random.uniform(0, 1) * 10
+      
+        if rand > 7:
+          #print(f'YAY! {self.name} found some food :)')
+          self.food += rand / 2.5
+
+        else:
+          #print(f'YAY! {self.name} found some tea :D')
+          self.tea.append(random.choices(tea_menu, weights = [0.1, 0.25, 0.5, 0.25, 0.1]))
+
+      else:
+        print(f'Ahh {self.name} found nothing :(')
+        self.panic_supply += 1
+
+  def danger_explore(self):
+
+      rand = random.uniform(0, 10) 
+
+
+
+
+
+  def consume(self):
+
+      if self.hunger < 10 and self.thirst >=3:
+        self.eating()
+
+      elif self.thirst < 5:
+        self.drinking()
+
+      else:
+        pass
+        #print("I'm actually all good right now")
+      
+
+
+  def action(self):
+
+    if self.alive == True:
+
+
+      print('Time has passed...')
+
+      ### Bodily Functions
+
+      self.hunger = self.hunger - 1
+      self.thirst = self.thirst - 1
+      
+      if self.food < 3:
+        self.panic_supply += 1
+      if len(self.tea) < 4:
+        self.panic_supply += 1 
+
+      if self.food > 5:
+        self.panic_supply -= 1
+      if len(self.tea) > 5:
+        self.panic_supply -= 1    
+
+      if self.food > self.init_food and len(self.tea) > self.init_tea:
+        self.panic_supply -= 2
+
+
+      if self.hunger < 3:
+        self.panic_health += 1
+      if self.thirst < 4:
+        self.panic_health += 1
+
+      if self.hunger < 3:
+        self.panic_health += 1
+      if self.thirst < 4:
+        self.panic_health += 1
+
+      
+      
+      if self.hunger <= 0 or self.thirst <= 0:
+        self.alive = False
+        print('Oh No! /n /n You Died... /n /n ')
+
+
+      self.food = round(self.food, 2)
+      self.tea_num = round(len(self.tea), 2)
+      self.panic_supply = max(self.panic_supply, 0)
+      self.panic_health = max(self.panic_health, 0)
+
+      ## Present Stats
+
+      #print('Stats: ', ' Hunger: ', self.hunger, ' Thirst: ', self.thirst, ' Food: ', self.food, ' Tea: ', self.tea)
+      
+      #print('Panic Health: ', self.panic_health, ' Panic Supply: ', self.panic_supply)
+
+
+      ## Actions
+
+      #print()
+      #print('What should we do?')
+
+      self.panic = self.panic_health - self.panic_supply
+
+      if self.panic >= 0:
+        #print("Let's Consume")
+        #self.danger_explore()
+        self.consume()  
+      else:
+        #print("Let's explore")
+        #self.danger_explore()
+        self.reward()
+
+      self.hunger_list.append(self.hunger)
+      self.thirst_list.append(self.thirst)
+      self.food_list.append(self.food)
+      self.tea_list.append(self.tea_num)
+      self.panic_supply_list.append(self.panic_supply)
+      self.panic_health_list.append(self.panic_health)
+
+  
