@@ -1,4 +1,14 @@
- 
+# IMPORTS
+import random
+import numpy as np
+import maplotlib.pyplot as plt
+
+# nn
+import torch
+from torch import nn
+
+
+
 
 philly = Person(prince_phil, init_tea = [tea_menu[2]]*int(random.uniform(0, 10)), init_food = random.uniform(0, 10),
                 init_hunger = random.uniform(4, 10), init_thirst = random.uniform(0, 10),
