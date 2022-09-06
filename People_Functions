@@ -1,0 +1,40 @@
+class Person:
+  def __init__(self, nameDict):
+    self.name = nameDict['Name']
+    self.Thirst = 1
+    self.tea = 5
+    self.alive = True
+
+  def drinking(self):
+    if self.tea > 0 and self.Thirst >0:
+      self.tea = self.tea - 0.25
+      self.Thirst = self.Thirst - 1
+      print(self.Thirst)
+      
+linus = { 'Name' : 'Linus', 
+         'Age' : 23,
+         'Religion' : 'Catholic',
+         'Thirst' : 1}
+
+adrian = { 'Name' : 'Adrian', 
+         'Age' : 1322,
+         'Religion' : 'Prince Philip Movement',
+         'Thirst' : 1}
+
+damo = { 'Name' : 'Damo', 
+         'Age' : 23,
+         'Religion' : 'Buddhism',
+         'Thirst' : 1}
+
+prince_phil = { 'Name' : 'Prince Philip', 
+                'Age' : 110,
+                'Religion' : 'Protestant',
+         'Thirst' : 1}
+
+people_list = [linus, adrian, damo, prince_phil]
+      
+philly = Person(prince_phil)
+
+print('Thirst', philly.Thirst)
+philly.drinking()
+print('Thirst', philly.Thirst)
